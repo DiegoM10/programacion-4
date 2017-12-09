@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body {font-family: Arial;}
+
+/*  */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #000000;
+}
+
+/* */
+div.tab button {
+    background-color: #000000;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px 30px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* color de cuando pasas el raton*/
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Color del boton activo */
+div.tab button.active {
+    background-color: #ccc;
+}
+.table {
+  align: center;
+  margin-top: 5%;
+  color: white;
+}
+body, html {height: 100%}
+</style>
+</head>
+<body  background="../static/barca.jpg" style=" background-size: cover; background-position: center; min-height: 100%; ">
+
+<div class="tab" >
+    <font color="white">
+  <button class="tablinks" onclick="openMenu(event, 'Home')" id="defaultOpen">Home</button>
+  <button class="tablinks" onclick="openMenu(event, 'Premier')">Premier League</button>
+  <button class="tablinks" onclick="openMenu(event, 'BBVA')">La Liga</button>
+  <button class="tablinks" onclick="openMenu(event, 'Bundesliga')">Bundesliga</button>
+  <button class="tablinks" onclick="openMenu(event, 'SerieA')">SerieA</button>
+  <button class="tablinks" onclick="openMenu(event, 'Ligue1')">Ligue1</button>
+</font>
+</div>
+
+<div id="Home" class="tabcontent">
+    <div class="container">
+      <table class="table">
+          <font color="white">
+              <h3>Premier League</h3>
+          </font>
+        <thead>
+          <tr>
+
+            <th>Equipo Local</th>
+            <th>Goles</th>
+            <th>Goles</th>
+            <th>Equipo Visitante</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+        {% for x in response %}
+
+          {% if x['result']['goalsHomeTeam'] and x['result']['goalsAwayTeam'] != 'None' %}
+            <tr>
+               <td>{{ x['homeTeamName'] }}</td>
+               <td>{{ x['result']['goalsHomeTeam'] }}</td>
+              <td>{{ x['result']['goalsAwayTeam'] }}</td>
+               <td>{{ x['awayTeamName'] }}</td>
+
+            </tr>
+          {% endif %}
+
+
+        {% endfor %}
+        </tbody>
+      </table>
+      <table class="table">
+        <font color="white">
+        <h3>La Liga</h3>
+            </font>
+        <thead>
+          <tr>
+
+            <th>Equipo Local</th>
+            <th>Goles</th>
+            <th>Goles</th>
+            <th>Equipo Visitante</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+        {% for x in resulbbva %}
+
+          {% if x['result']['goalsHomeTeam'] and x['result']['goalsAwayTeam'] != 'None' %}
+            <tr>
+               <td>{{ x['homeTeamName'] }}</td>
+               <td>{{ x['result']['goalsHomeTeam'] }}</td>
+              <td>{{ x['result']['goalsAwayTeam'] }}</td>
+               <td>{{ x['awayTeamName'] }}</td>
+
+            </tr>
+          {% endif %}
+
+
+        {% endfor %}
+        </tbody>
+      </table>
+      <table class="table">
+          <font color="white">
+              <h3>Serie A</h3>
+          </font>
+        <thead>
+          <tr>
+
+            <th>Equipo Local</th>
+            <th>Goles</th>
+            <th>Goles</th>
+            <th>Equipo Visitante</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+        {% for x in resulserieA %}
+
+          {% if x['result']['goalsHomeTeam'] and x['result']['goalsAwayTeam'] != 'None' %}
+            <tr>
+               <td>{{ x['homeTeamName'] }}</td>
+               <td>{{ x['result']['goalsHomeTeam'] }}</td>
+              <td>{{ x['result']['goalsAwayTeam'] }}</td>
+               <td>{{ x['awayTeamName'] }}</td>
+
+            </tr>
+          {% endif %}
+
+
+        {% endfor %}
+        </tbody>
+      </table>
+       <table class="table">
+          <font color="white">
+              <h3>Bundes Liga</h3>
+          </font>
+        <thead>
+          <tr>
+
+            <th>Equipo Local</th>
+            <th>Goles</th>
+            <th>Goles</th>
+            <th>Equipo Visitante</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+        {% for x in resulbundes %}
+
+          {% if x['result']['goalsHomeTeam'] and x['result']['goalsAwayTeam'] != 'None' %}
+            <tr>
+               <td>{{ x['homeTeamName'] }}</td>
+               <td>{{ x['result']['goalsHomeTeam'] }}</td>
+              <td>{{ x['result']['goalsAwayTeam'] }}</td>
+               <td>{{ x['awayTeamName'] }}</td>
+
+            </tr>
+          {% endif %}
+
+
+        {% endfor %}
+        </tbody>
+      </table>
+      </table>
+       <table class="table">
+          <font color="white">
+              <h3>Ligue 1</h3>
+          </font>
+        <thead>
+          <tr>
+
+            <th>Equipo Local</th>
+            <th>Goles</th>
+            <th>Goles</th>
+            <th>Equipo Visitante</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+        {% for x in resulligue %}
+
+          {% if x['result']['goalsHomeTeam'] and x['result']['goalsAwayTeam'] != 'None' %}
+            <tr>
+               <td>{{ x['homeTeamName'] }}</td>
+               <td>{{ x['result']['goalsHomeTeam'] }}</td>
+              <td>{{ x['result']['goalsAwayTeam'] }}</td>
+               <td>{{ x['awayTeamName'] }}</td>
+
+            </tr>
+          {% endif %}
+
+
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+</div>
+
+<div id="Premier" class="tabcontent">
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Posicion</th>
+            <th>Equipo</th>
+            <th>Puntos</th>
+            <th>partidos</th>
+            <th>goles</th>
+            <th>Goles en contra</th>
+            <th>Diferencia de goles</th>
+          </tr>
+        </thead>
+        {% for x in premier %}
+        <tbody>
+          <tr>
+            <td>{{x['rank']}}</td>
+            <td>{{ x['team'] }}</td>
+            <td>{{ x['points'] }}</td>
+            <td>{{ x['playedGames'] }}</td>
+            <td>{{ x['goals'] }}</td>
+            <td>{{ x['goalsAgainst'] }}</td>
+            <td>{{ x['goalDifference'] }}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+</div>
+<div id="BBVA" class="tabcontent">
+      <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Posicion</th>
+            <th>Equipo</th>
+            <th>Puntos</th>
+            <th>partidos</th>
+            <th>goles</th>
+            <th>Goles en contra</th>
+            <th>Diferencia de goles</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for x in bbva %}
+          <tr>
+            <td>{{ x['rank'] }}</td>
+            <td>{{ x['team'] }}</td>
+            <td>{{ x['points'] }}</td>
+            <td>{{ x['playedGames'] }}</td>
+            <td>{{ x['goals'] }}</td>
+            <td>{{ x['goalsAgainst'] }}</td>
+            <td>{{ x['goalDifference'] }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<div id="Bundesliga" class="tabcontent">
+      <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Posicion</th>
+            <th>Equipo</th>
+            <th>Puntos</th>
+            <th>partidos</th>
+            <th>goles</th>
+            <th>Goles en contra</th>
+            <th>Diferencia de goles</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for x in bundes %}
+          <tr>
+            <td>{{ x['rank']}}</td>
+            <td>{{ x['team'] }}</td>
+            <td>{{ x['points'] }}</td>
+            <td>{{ x['playedGames'] }}</td>
+            <td>{{ x['goals'] }}</td>
+            <td>{{ x['goalsAgainst'] }}</td>
+            <td>{{ x['goalDifference'] }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<div id="SerieA" class="tabcontent">
+      <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Posicion</th>
+            <th>Equipo</th>
+            <th>Puntos</th>
+            <th>partidos</th>
+            <th>goles</th>
+            <th>Goles en contra</th>
+            <th>Diferencia de goles</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for x in serieA %}
+          <tr>
+            <td>{{ x['rank']}}</td>
+            <td>{{ x['team'] }}</td>
+            <td>{{ x['points'] }}</td>
+            <td>{{ x['playedGames'] }}</td>
+            <td>{{ x['goals'] }}</td>
+            <td>{{ x['goalsAgainst'] }}</td>
+            <td>{{ x['goalDifference'] }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<div id="Ligue1" class="tabcontent">
+      <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Posicion</th>
+            <th>Equipo</th>
+            <th>Puntos</th>
+            <th>partidos</th>
+            <th>goles</th>
+            <th>Goles en contra</th>
+            <th>Diferencia de goles</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for x in ligue %}
+          <tr>
+            <td>{{ x['rank']}}</td>
+            <td>{{ x['team'] }}</td>
+            <td>{{ x['points'] }}</td>
+            <td>{{ x['playedGames'] }}</td>
+            <td>{{ x['goals'] }}</td>
+            <td>{{ x['goalsAgainst'] }}</td>
+            <td>{{ x['goalDifference'] }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+<script>
+function openMenu(evt, menu) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(menu).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+document.getElementById("defaultOpen").click();
+</script>
+</div>
+</body>
+
+</html>
